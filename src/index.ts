@@ -72,10 +72,10 @@ function loadStats(): void {
 
 function executeCommands(commands: string[], labels: QLabel[]) {
   if (commands.length != labels.length) {
-    throw new Error("Commands' number is not equal to labels' number!");
+    throw new Error(`Commands' number (${commands.length}) is not equal to labels' number (${labels.length})!`);
   }
-  commands.forEach(cmd => {
-    loadCommandOutputToLabel(cmd, testLabel);
+  commands.forEach((cmd, index: number) => {
+    loadCommandOutputToLabel(cmd, labels[index]);
   });
 }
 
