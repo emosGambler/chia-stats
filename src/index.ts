@@ -1,7 +1,7 @@
 import { QMainWindow, QWidget, QLabel, FlexLayout, QPushButton, QIcon } from '@nodegui/nodegui';
 import logo from '../assets/logox200.png';
 import { exec } from "child_process";
-import { stringify } from 'node:querystring';
+import { Commands } from "./config/commands";
 
 const win: QMainWindow = new QMainWindow();
 const centralWidget: QWidget = new QWidget();
@@ -64,7 +64,7 @@ function setGui(): void {
 }
 
 function loadStats(): void {
-  const commands: string[] = ["ls -la", "sensors"];
+  const commands: string[] = Commands.getCommands();
   const labels: QLabel[] = [componentsInfoLabel, testLabel];
 
   executeCommands(commands, labels)
